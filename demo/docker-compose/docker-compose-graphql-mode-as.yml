@@ -24,8 +24,8 @@ services:
       APIFW_WRITE_TIMEOUT: "5s"
       APIFW_LOG_LEVEL: "info"
     volumes:
-      # Enter your local path and filename for your graphql schema #
-      - ./volumes/api-firewall/schema.graphql:/opt/resources/schema.graphql:ro
+      # Enter your local path and filename for your graphql schema Example: ./volumes/api-firewall/schema.graphql:/opt/resources/schema.graphql:ro #
+      - <local_path_to_your_graphql_schema>:/opt/resources/schema.graphql:ro
     ports:
       - "8080:8080"
       - "9667:9667"
