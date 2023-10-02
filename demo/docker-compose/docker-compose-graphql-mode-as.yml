@@ -6,7 +6,7 @@ services:
     restart: on-failure
     environment:
       APIFW_MODE: "graphql"
-      # Allow or Deny (true,false) GraphQL Introspection, note the method postman uses is currently unsupported, but it works with the included IDE #
+      # Allow or Deny (true,false) GraphQL Introspection, note the method postman uses is currently blocked (in mode = BLOCK), but it works with the included IDE #
       APIFW_GRAPHQL_INTROSPECTION: "false"
       APIFW_GRAPHQL_MAX_QUERY_COMPLEXITY: "10"
       APIFW_GRAPHQL_MAX_QUERY_DEPTH: "10"
