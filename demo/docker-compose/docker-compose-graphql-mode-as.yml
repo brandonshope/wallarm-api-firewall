@@ -10,7 +10,7 @@ services:
       APIFW_GRAPHQL_MAX_QUERY_COMPLEXITY: "10"
       APIFW_GRAPHQL_MAX_QUERY_DEPTH: "10"
       APIFW_GRAPHQL_NODE_COUNT_LIMIT: "10"
-      # Enable GraphQL Playground is an in-browser IDE at root of URL (note if your graph endpoint is at root leave this false) #
+      # Enable GraphQL Playground, an in-browser IDE accessable at the root of the api-firewall URL (note if your graph endpoint is at root leave this false) #
       APIFW_GRAPHQL_PLAYGROUND: "false"
       # Mode options BLOCK, LOG_ONLY, DISABLE #
       APIFW_GRAPHQL_REQUEST_VALIDATION: "BLOCK"
