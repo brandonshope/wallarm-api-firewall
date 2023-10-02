@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api-firewall:
+    container_name: api-firewall
+    image: wallarm/api-firewall:v0.6.13
+    restart: on-failure
+    environment:
+      APIFW_MODE: "graphql"
+      APIFW_GRAPHQL_INTROSPECTION: "false"
+      APIFW_GRAPHQL_MAX_QUERY_COMPLEXITY: "10"
+      APIFW_GRAPHQL_MAX_QUERY_DEPTH: "10"
+      APIFW_GRAPHQL_NODE_COUNT_LIMIT: "10"
+      # Enable GraphQL Playground is an in-browser IDE at root of URL (note if your graph endpoint is at root leave this false) #
+      APIFW_GRAPHQL_PLAYGROUND: "false"
+      # Mode options BLOCK, LOG_ONLY, DISABLE #
+      APIFW_GRAPHQL_REQUEST_VALIDATION: "BLOCK"
+      # https://github.com/graphql/swapi-graphql
+      APIFW_GRAPHQL_SCHEMA: "/opt/resources/schema.graphql"
+      # Example # APIFW_SERVER_URL: "https://swapi-graphql.netlify.app/.netlify/functions/index"
+      APIFW_SERVER_URL: "<enter_your_graphql_url_and_path>"
+      APIFW_URL: "http://0.0.0.0:8080"
+      APIFW_HEALTH_HOST: "0.0.0.0:9667"
+      APIFW_READ_TIMEOUT: "5s"
+      APIFW_WRITE_TIMEOUT: "5s"
+      APIFW_LOG_LEVEL: "info"
+    volumes:
+      # Enter your local path and filename for your graphql schema #
+      - ./volumes/api-firewall/schema.graphql:/opt/resources/schema.graphql:ro
+    ports:
+      - "8080:8080"
+      - "9667:9667"
+    stop_grace_period: 1s
